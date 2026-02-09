@@ -1,11 +1,21 @@
 name: First CI Job
 
-on: [push]
-
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      username:
+        description: "Enter username"
+        required: true
+        default: "Student"
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Print Username
+        run: echo "Hello ${{ github.event.inputs.username }}"
       - uses: actions/checkout@v3
       - name: Print message
         run: echo "Hello GitHub Actions"
