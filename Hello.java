@@ -4,3 +4,4 @@ public class Hello {
     }
 }
 // Git Integration testing
+// Automatic trigger testing
