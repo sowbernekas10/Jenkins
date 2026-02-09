@@ -14,12 +14,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Print Username
-        run: echo "Hello ${{ github.event.inputs.username }}"
-      - uses: actions/checkout@v3
-      - name: Print message
-        run: echo "Hello GitHub Actions"
-      - name: Create file
-        run: echo "Workspace file created" > test.txt
-      - name: Show file
-        run: cat test.txt
+         - uses: actions/setup-java@v3
+           with:
+           java-version: '17'
+           distribution: 'temurin'
+
+         - name: Compile Java
+           run: javac Hello.java
+
+         - name: Run Java
+           run: java Hello
+         - name: Print Username
+           run: echo "Hello ${{ github.event.inputs.username }}"
+         - uses: actions/checkout@v3
+         - name: Print message
+           run: echo "Hello GitHub Actions"
+         - name: Create file
+           run: echo "Workspace file created" > test.txt
+         - name: Show file
+           run: cat test.txt
